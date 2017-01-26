@@ -26,11 +26,18 @@ class EventListener implements Listener {
 	 * @return bool
 	 */
 	public function onClickTable(PlayerInteractEvent $event) {
-		if (($player = $event->getPlayer())->hasPermission('randomenchant') && ($item = $player->getInventory()->getItemInHand()) instanceof Tool || $player->getInventory()->getItemInHand() instanceof Armor && $event->getBlock()->getId() === Block::ENCHANT_TABLE) {
-			while (!$item->hasEnchantments()) {
-				$player->getInventory()->getItemInHand()->addEnchantment(Enchantment::getEnchantment(mt_rand(0, 24)));
+		if (($player = $event->getPlayer())->hasPermission('randomenchant') && $event->getBlock()->getId() === Block::ENCHANT_TABLE) {
+			$item = $player->getInventory()->getItemInHand();
+			if ($item instanceof Tool || $item instanceof Armor) {
+				while (!$item->hasEnchantments()) {
+					$enchantment = Enchantment::getEnchantment(mt_rand(0, 24));
+					if($enchantment->getId() === Enchantment::TYPE_INVALID)
+						continue;
+					$item->addEnchantment($enchantment);
+				}
+				$player->getInventory()->setItemInHand($item);
+				$event->setCancelled();
 			}
-			$event->setCancelled();
 		}
 		return true;
 	}
