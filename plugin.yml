@@ -1,7 +1,7 @@
   name: RandomEnchant
   main: xenialdan\RandomEnchant\Loader
-  version: 1.0.2
-  api: ['*', '3.0.0-ALPHA2', '3.0.0-ALPHA1', '3.0.0']
+  version: 1.0.3
+  api: ['*', '3.0.0-ALPHA3', '3.0.0-ALPHA2', '3.0.0-ALPHA1', '3.0.0']
   load: POSTWORLD
   authors: [XenialDan]
   prefix: "RandomEnchant by XenialDan"
