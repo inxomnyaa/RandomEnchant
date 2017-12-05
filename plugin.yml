@@ -1,11 +1,16 @@
-  name: RandomEnchant
-  main: xenialdan\RandomEnchant\Loader
-  version: 2.0.0
-  api: ['3.0.0-ALPHA7']
-  load: POSTWORLD
-  authors: [XenialDan]
-  prefix: "RandomEnchant by XenialDan"
-  permissions:
-    randomenchant:
-      description: Perm for getting enchants
-      default: op
+---
+name: RandomEnchant
+main: xenialdan\RandomEnchant\Loader
+version: 2.0.0
+api:
+- 3.0.0-ALPHA9
+- 3.0.0-ALPHA10
+load: POSTWORLD
+authors:
+- XenialDan
+prefix: RandomEnchant by XenialDan
+permissions:
+  randomenchant:
+    description: Perm for getting enchants
+    default: op
+...
