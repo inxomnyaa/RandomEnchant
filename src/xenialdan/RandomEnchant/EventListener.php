@@ -7,6 +7,7 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Armor;
 use pocketmine\item\enchantment\Enchantment;
+use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\item\Tool;
 use pocketmine\plugin\Plugin;
 
@@ -32,7 +33,7 @@ class EventListener implements Listener{
 				do{
 					$enchantment = Enchantment::getEnchantment(mt_rand(Enchantment::PROTECTION, Enchantment::MENDING));
 					if ($item->hasEnchantment($enchantment->getId())) continue;
-					$item->addEnchantment($enchantment);
+					$item->addEnchantment(new EnchantmentInstance($enchantment));
 				} while (!$item->hasEnchantment($enchantment->getId()));
 				$event->setCancelled();
 			}
